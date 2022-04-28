@@ -1,0 +1,151 @@
+view all Database 
+show dbs
+
+--------------------------------------------------------
+create/switch a new Database
+use name
+
+--------------------------------------------------------
+
+view current Database 
+db
+
+
+--------------------------------------------------------
+
+Delete Database(current Database)
+db.dropDatabase()
+
+
+--------------------------------------------------------
+
+Mongodb commands for Collections 
+show collections 
+
+create a collection named "comments"
+db.createCollections('comments')
+
+
+delete collection
+db.collectionname.drop()
+
+
+--------------------------------------------------------
+
+Mongodb commands for Rows 
+Insert one Rows 
+db.collectionname.insert({
+	'name':'mayur',
+	'school/college name':'VGEC';
+	'year':'2'
+})
+
+--------------------------------------------------------
+
+Insert Many Rows
+db.collectionname.insertMany([{
+	'name':'Mayur',
+	'school/college name':'VGEC';
+	'year':'2'
+},
+{
+	'name':'Keval',
+	'school/college name':'VGEC';
+	'year':'2'
+},
+{
+	'name':'Hiren',
+	'school/college name':'GECP';
+	'year':'2'
+}]) 
+
+--------------------------------------------------------
+
+
+Delete Rows
+
+db.collectionname.remove({name: 'Mayur'})
+
+
+show all Rows in collection
+db.collectionname.find()
+
+db.collectionname.find().pretty()
+--------------------------------------------------------
+
+find first row matching the object
+db.collectionname.findOne({name: 'Mayur'})
+
+--------------------------------------------------------
+
+Search in a Mongodb Database
+
+db.collectionname.find({'school/college':'GECP'})
+
+--------------------------------------------------------
+
+show limited Rows
+
+db.collectionname.find().pretty().limit(2)
+
+
+--------------------------------------------------------
+
+count the output
+
+db.collectionname.find().pretty().count()
+
+--------------------------------------------------------
+
+db.collectionname.find().sort({year:1}).preety()
+
+db.collectionname.find().sort({year:-1}).preety()
+
+--------------------------------------------------------
+
+Update a Row 
+db.collectionname.update({name:'Mayur'},
+{
+	'name':'Mayur',
+	'school/college name':'VGEC';
+	'year':'2'
+})
+
+-------------------------------------------------------
+
+if you want insert not finded object 
+db.collectionname.update({name:'Mayur'},
+{
+	'name':'Mayur Asodara',
+	'school/college name':'VGEC';
+	'year':'2'
+}, {upsert: true})
+
+
+-------------------------------------------------------
+
+Mongodb Increment Operator
+
+db.collectionname.update({name: 'Mayur'},
+{$inc:{
+	year : 1
+}})
+
+
+--------------------------------------------------------
+
+Mongodb Rename Operator
+
+db.collectionname.update({name: 'Mayur'},
+{$rename:{
+	school/college: 'college name'
+}}
+)
+
+--------------------------------------------------------
+
+Less Than 
+db.collectionname.find({Year:{$lt: 3}})
+
+
+
